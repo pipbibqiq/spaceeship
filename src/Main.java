@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // Без этого мы не сможем считывать текст введённый с клавиатуры
 
-                            // Создаём корабли и прописываем значения характеристик, которые мы обозначили в классе "Spacesship"
+                            // Создаём корабли и прописываем значения характеристик, которые мы обозначили в классе "Spaceship"
         Spaceship spaceship1 = new Spaceship("Корабль 1", 1000, 5, "Ионный"); //
         Spaceship spaceship2 = new Spaceship("Корабль 2", 1500, 8, "Ядерный");
         Spaceship spaceship3 = new Spaceship("Корабль 3", 7000, 16, "На дровах");
@@ -16,7 +16,7 @@ public class Main {
 
         int choice; // Создаём переменную, в которую мы потом будем записывать числа (пункты меню)
         do {       // do {действия} (выполнять следующие действия) while {условие} (пока не будет выполнено какое-то условие)
-                  // Выводим менюху
+                  // Выводим меню
             System.out.println("Меню:");
             System.out.println("1. Информация о корабле");
             System.out.println("2. Запустить корабль");
@@ -25,7 +25,7 @@ public class Main {
             System.out.println("5. Вернуть корабль из космоса");
             System.out.println("6. Список кораблей в очереди");
             System.out.println("7. Добавить корабль в очередь");
-            System.out.println("8. Удлить корабль из очереди");
+            System.out.println("8. Удалить корабль из очереди");
             System.out.println("0. Выход");
             System.out.print("Выберите действие: ");
             choice = scanner.nextInt(); // Считываем число, которое ввели с клавиатуры (выбрали определённый пункт меню) и записываем его в переменную "choice"
@@ -38,7 +38,7 @@ public class Main {
                          // shipNumber = 3, то selectedShip = "Корабль 3" : иначе selectedShip = null
                     Spaceship selectedShip = shipNumber == 1 ? spaceship1 : (shipNumber == 2 ? spaceship2 : (shipNumber == 3 ? spaceship3 : null));
                     if (selectedShip != null) {        // Если selectedShip не равно null, то...
-                        selectedShip.printShipInfo(); //передаём записанный в selectedShip корабль в метод .printShipInfo() и выполняем его
+                        selectedShip.printShipInfo(); //передаём записанный в selectedShip корабль в метод printShipInfo() и выполняем его
                     } else {                         // Иначе...
                         System.out.println("Неверный номер корабля.");
                     }
