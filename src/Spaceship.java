@@ -1,39 +1,42 @@
 // Класс, представляющий космический корабль
 public class Spaceship {
-    private final String name;         // Название корабля
+    private final String name;           // Название корабля
     private final int maxSpeed;        // Максимальная скорость корабля
-    private final int crewSize;        // Размер экипажа корабля
-    private boolean isDocked;    // Статус корабля (пришвартован или нет)
+    private final int crewSize;      // Размер экипажа корабля
+    private boolean isDocked;      // Статус корабля в ангаре
     private boolean isInSpace;   // Статус корабля в космосе
-    private boolean isStart;
+    private boolean isStart;   // Статус корабля на стартовой площадке
     private final String propulsionType;  // Тип двигателя корабля
 
     // Конструктор класса для создания корабля с начальными характеристиками
     public Spaceship(String name, int maxSpeed, int crewSize, String propulsionType) {
-        this.name = name;
-        this.maxSpeed = maxSpeed;
-        this.crewSize = crewSize;
-        this.isDocked = true; // При создании корабль всегда в ангаре
-        this.isStart = false;
+        this.name = name;            //Название корабля не меняется (Указывается при создании в классе Main)
+        this.maxSpeed = maxSpeed;   //Максимальная скорость корабля не меняется (Указывается при создании в классе Main)
+        this.crewSize = crewSize;  //Количество экипажа корабля не меняется (Указывается при создании в классе Main)
+        this.isDocked = true;     // При создании корабль всегда в ангаре
+        this.isStart = false;    // При создании корабль не находится на стартовой плащадке
         this.isInSpace = false; // При создании корабль не находится в космосе
-        this.propulsionType = propulsionType;
+        this.propulsionType = propulsionType; //Тип двигателя корабля не меняется (Указывается при создании в классе Main)
     }
 
     // Метод для помещения корабля на старт
     public void start() {
-        if (isDocked && !isInSpace) {
-            isDocked = false;
-            isStart = true;
+        if (isDocked && !isInSpace) { // Если корабль в ангаре И не в космосе (символ ! - "не")
+            isDocked = false;        // Значит мы его забираем из ангара
+            isStart = true;         // И помещаем на стартовую площадку
+                                   //Параметр находения корабля в космосе "isInSpace" остаётся без изменений (он остаётся НЕ в космосе), поэтому его тут писать не нужно
             System.out.println("\n" + name + " на старте.\n");
         } else {
             System.out.println("\n" + name + " не может быть помещён на стартовую площадку, так как он либо уже там, либо он в космосе.\n");
         }
     }
+
     // Метод для помещения корабля в ангар
     public void dock() {
-        if (!isDocked && !isInSpace) {
-            isDocked = true;
-            isStart = false;
+        if (!isDocked && !isInSpace) { // Если корабль не в ангаре И не в космосе (символ ! - "не")
+            isDocked = true;          // Значит мы его помещаем в ангара
+            isStart = false;         // И убераем со стартовой площадки
+                                    //Параметр находения корабля в космосе "isInSpace" остаётся без изменений (он остаётся НЕ в космосе), поэтому его тут писать не нужно
             System.out.println("\n" + name + " в ангаре.\n");
         } else {
             System.out.println("\n" + name + " не может быть помещён в ангар, так как он либо уже там, либо он в космосе.\n");
@@ -42,10 +45,10 @@ public class Spaceship {
 
     // Метод для отправки корабля в космос
     public void launch() {
-        if (isStart) {
-            isDocked = false;
-            isStart = false;
-            isInSpace = true;
+        if (isStart && !isDocked) { // Если корабль на стартовой площадке И не в ангаре (символ ! - "не")
+            isStart = false;       // Значит мы его убераем со стартовой площадки
+            isInSpace = true;     // И добавляем в космос (значение isInSpace(в космосе) = да)
+                                 //Параметр находения корабля в ангаре "isDocked" остаётся без изменений (он остаётся НЕ в ангаре), поэтому его тут писать не нужно
             System.out.println("\n" + name + " отправляется в космос.\n");
         } else {
             System.out.println("\n" + name + " не может отправиться в космос, так как не помещён на стартовую площадку.\n");
@@ -54,9 +57,10 @@ public class Spaceship {
 
     // Метод для возвращения корабля из космоса
     public void returnFromSpace() {
-        if (isInSpace) {
-            isDocked = true;
-            isInSpace = false;
+        if (isInSpace) {          //Если корабль в космосе (и мы его хотим вернуть)
+            isInSpace = false;   // Значит мы его убераем из космоса
+            isDocked = true;    // И помещаем в ангар (условно корабль вернулся и мы его сразу в ангар)
+                               //Параметр находения корабля на стартовой площадке "isStart" остаётся без изменений (он остаётся НЕ на стартовой площадке), поэтому его тут писать не нужно
             System.out.println("\n" + name + " Возвращается из космоса.\n");
         } else {
             System.out.println("\n" + name + " Не может вернуться из космоса, так как не находится там.\n");
