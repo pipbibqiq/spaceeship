@@ -18,14 +18,14 @@ public class SpaceshipQueue {
     }
 
     // Метод для удаления корабля из очереди
-    public static void removeSpaceship() { // Этому методу не нужно ничего в себя принимать (не нужно в него ничего передовать)
+    public static void removeSpaceship() { // Этому методу не нужно ничего в себя принимать (не нужно в него ничего передавать)
         spaceshipQueue.poll();            // Так как он просто удаляет первый элемент очереди (корабль, который первый в очереди)
     }
 
     // Метод для вывода информации о всех кораблях в очереди
     public static void printAllSpaceshipsInfo() {
-        for (Spaceship spaceship : spaceshipQueue) {
-            spaceship.printShipInfo();
+        for (Spaceship spaceship : spaceshipQueue) { // Запускаем цикл
+            spaceship.printShipInfo();              // И выводим информацию о кораблях в той последовательности, в которой они находятся в очереди
             System.out.println("===========");
         }
     }
