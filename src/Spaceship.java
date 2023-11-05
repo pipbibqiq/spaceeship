@@ -1,30 +1,30 @@
 // Класс, представляющий космический корабль
 public class Spaceship {
-    private String name;         // Название корабля
-    private int maxSpeed;        // Максимальная скорость корабля
-    private int crewSize;        // Размер экипажа корабля
+    private final String name;         // Название корабля
+    private final int maxSpeed;        // Максимальная скорость корабля
+    private final int crewSize;        // Размер экипажа корабля
     private boolean isDocked;    // Статус корабля (пришвартован или нет)
     private boolean isInSpace;   // Статус корабля в космосе
-    private String propulsionType;  // Тип двигателя корабля
+    private final String propulsionType;  // Тип двигателя корабля
 
     // Конструктор класса для создания корабля с начальными характеристиками
     public Spaceship(String name, int maxSpeed, int crewSize, String propulsionType) {
         this.name = name;
         this.maxSpeed = maxSpeed;
         this.crewSize = crewSize;
-        this.isDocked = true; // При создании корабль всегда пришвартован
+        this.isDocked = false; // При создании корабль всегда не на старте
         this.isInSpace = false; // При создании корабль не находится в космосе
         this.propulsionType = propulsionType;
     }
 
-    // Метод для пришвартовки корабля
+    // Метод для помещения корабля на старт
     public void dock() {
         if (!isDocked) {
             isDocked = true;
             isInSpace = false;
-            System.out.println(name + " пришвартован.");
+            System.out.println(name + " корабль на старте.");
         } else {
-            System.out.println(name + " уже пришвартован.");
+            System.out.println(name + " уже на старте.");
         }
     }
 
@@ -35,7 +35,7 @@ public class Spaceship {
             isInSpace = true;
             System.out.println(name + " отправляется в космос.");
         } else {
-            System.out.println(name + " не может отправиться в космос, так как не пришвартован.");
+            System.out.println(name + " не может отправиться в космос, так как не помещён на стартовую площадку.");
         }
     }
 
@@ -50,20 +50,12 @@ public class Spaceship {
         }
     }
 
-    // Метод для обновления характеристик корабля
-    public void updateCharacteristics(String name, int maxSpeed, int crewSize, String propulsionType) {
-        this.name = name;
-        this.maxSpeed = maxSpeed;
-        this.crewSize = crewSize;
-        this.propulsionType = propulsionType;
-    }
-
     // Метод для вывода информации о корабле
     public void printShipInfo() {
         System.out.println("Космический корабль: " + name);
         System.out.println("Максимальная скорость: " + maxSpeed);
         System.out.println("Размер экипажа: " + crewSize);
-        System.out.println("Статус: " + (isInSpace ? "В космосе" : (isDocked ? "Пришвартован" : "Не пришвартован")));
+        System.out.println("Статус: " + (isInSpace ? "В космосе" : (isDocked ? "На стартовой площадке" : "Не на стартовой площадке")));
         System.out.println("Тип двигателя: " + propulsionType);
     }
 }
