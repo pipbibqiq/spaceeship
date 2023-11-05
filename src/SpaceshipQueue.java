@@ -1,17 +1,21 @@
 import java.util.Queue;
 import java.util.LinkedList;
 
-// Класс для управления очередью космических кораблей
 public class SpaceshipQueue {
-    private final Queue<Spaceship> spaceshipQueue = new LinkedList<>();
+    private static final Queue<Spaceship> spaceshipQueue = new LinkedList<>();
 
     // Метод для добавления корабля в очередь
-    public void addSpaceship(Spaceship spaceship) {
+    public static void addSpaceship(Spaceship spaceship) {
         spaceshipQueue.add(spaceship);
     }
 
+    // Метод для удаления корабля из очереди
+    public static void removeSpaceship() {
+        spaceshipQueue.poll();
+    }
+
     // Метод для вывода информации о всех кораблях в очереди
-    public void printAllSpaceshipsInfo() {
+    public static void printAllSpaceshipsInfo() {
         for (Spaceship spaceship : spaceshipQueue) {
             spaceship.printShipInfo();
             System.out.println("===========");
