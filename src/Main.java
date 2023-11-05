@@ -15,7 +15,7 @@ public class Main {
         SpaceshipQueue.addSpaceship(spaceship3);
 
         int choice; // Создаём переменную, в которую мы потом будем записывать числа (пункты меню)
-        do {
+        do {       // do {действия} (выполнять следующие действия) while {условие} (пока не будет выполнено какое-то условие)
                   // Выводим менюху
             System.out.println("Меню:");
             System.out.println("1. Информация о корабле");
