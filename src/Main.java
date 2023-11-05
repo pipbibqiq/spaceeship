@@ -6,9 +6,11 @@ public class Main {
 
         Spaceship spaceship1 = new Spaceship("Корабль 1", 1000, 5, "Ионный");
         Spaceship spaceship2 = new Spaceship("Корабль 2", 1500, 8, "Ядерный");
+        Spaceship spaceship3 = new Spaceship("Корабль 3", 7000, 16, "На дровах");
 
         SpaceshipQueue.addSpaceship(spaceship1);
         SpaceshipQueue.addSpaceship(spaceship2);
+        SpaceshipQueue.addSpaceship(spaceship3);
 
         int choice;
         do {
@@ -27,9 +29,9 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Введите номер корабля (1 или 2): ");
+                    System.out.print("Введите номер корабля (1, 2, 3): ");
                     int shipNumber = scanner.nextInt();
-                    Spaceship selectedShip = shipNumber == 1 ? spaceship1 : (shipNumber == 2 ? spaceship2 : null);
+                    Spaceship selectedShip = shipNumber == 1 ? spaceship1 : (shipNumber == 2 ? spaceship2 : (shipNumber == 3 ? spaceship3 : null));
                     if (selectedShip != null) {
                         selectedShip.printShipInfo();
                     } else {
@@ -39,9 +41,9 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.print("Введите номер корабля (1 или 2) для запуска: ");
+                    System.out.print("Введите номер корабля (1, 2, 3) для запуска: ");
                     int launchShipNumber = scanner.nextInt();
-                    Spaceship selectedLaunchShip = launchShipNumber == 1 ? spaceship1 : (launchShipNumber == 2 ? spaceship2 : null);
+                    Spaceship selectedLaunchShip = launchShipNumber == 1 ? spaceship1 : (launchShipNumber == 2 ? spaceship2 : (launchShipNumber == 3 ? spaceship3 : null));
                     if (selectedLaunchShip != null) {
                         selectedLaunchShip.launch();
                     } else {
@@ -51,9 +53,9 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.print("Введите номер корабля (1 или 2) для помещения на стартовую площадку: ");
+                    System.out.print("Введите номер корабля (1, 2, 3) для помещения на стартовую площадку: ");
                     int startShipNumber = scanner.nextInt();
-                    Spaceship selectedStartShip = startShipNumber == 1 ? spaceship1 : (startShipNumber == 2 ? spaceship2 : null);
+                    Spaceship selectedStartShip = startShipNumber == 1 ? spaceship1 : (startShipNumber == 2 ? spaceship2 : (startShipNumber == 3 ? spaceship3 : null));
                     if (selectedStartShip != null) {
                         selectedStartShip.start();
                     } else {
@@ -63,9 +65,9 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.print("Введите номер корабля (1 или 2) для помещения в ангар: ");
+                    System.out.print("Введите номер корабля (1, 2, 3) для помещения в ангар: ");
                     int dockShipNumber = scanner.nextInt();
-                    Spaceship selectedDockShip = dockShipNumber == 1 ? spaceship1 : (dockShipNumber == 2 ? spaceship2 : null);
+                    Spaceship selectedDockShip = dockShipNumber == 1 ? spaceship1 : (dockShipNumber == 2 ? spaceship2 : (dockShipNumber == 3 ? spaceship3 : null));
                     if (selectedDockShip != null) {
                         selectedDockShip.dock();
                     } else {
@@ -75,9 +77,9 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.print("Введите номер корабля (1 или 2) для возврата из космоса: ");
+                    System.out.print("Введите номер корабля (1, 2, 3) для возврата из космоса: ");
                     int returnShipNumber = scanner.nextInt();
-                    Spaceship selectedReturnShip = returnShipNumber == 1 ? spaceship1 : (returnShipNumber == 2 ? spaceship2 : null);
+                    Spaceship selectedReturnShip = returnShipNumber == 1 ? spaceship1 : (returnShipNumber == 2 ? spaceship2 : (returnShipNumber == 3 ? spaceship3 : null));
                     if (selectedReturnShip != null) {
                         selectedReturnShip.returnFromSpace();
                     } else {
@@ -92,11 +94,12 @@ public class Main {
                     break;
 
                 case 7:
-                    System.out.print("Введите номер корабля (1 или 2) для добавления в очередь: ");
+                    System.out.print("Введите номер корабля (1, 2, 3) для добавления в очередь: ");
                     int addShipNumber = scanner.nextInt();
-                    Spaceship selectedAddShip = addShipNumber == 1 ? spaceship1 : (addShipNumber == 2 ? spaceship2 : null);
+                    Spaceship selectedAddShip = addShipNumber == 1 ? spaceship1 : (addShipNumber == 2 ? spaceship2 : (addShipNumber == 3 ? spaceship3 : null));
                     if (selectedAddShip != null) {
                         SpaceshipQueue.addSpaceship(selectedAddShip);
+                        System.out.println("Успешно!");
                     } else {
                         System.out.println("Неверный номер корабля.");
                     }
@@ -105,6 +108,7 @@ public class Main {
 
                 case 8:
                     SpaceshipQueue.removeSpaceship();
+                    System.out.println("Успешно!");
                     System.out.println("\n=============================================\n");
                     break;
 
